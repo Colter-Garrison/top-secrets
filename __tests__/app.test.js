@@ -54,7 +54,15 @@ describe('backend-express-template routes', () => {
     const res = await agent.get('/api/v1/secrets');
     expect(res.status).toBe(200);
   });
-  
+
+  it('POST should create a new secret', async () => {
+    const [agent] = await registerAndLogin();
+    const res = await agent.post('/api/v1/secrets').send({
+      title: 'I am a new SeCrEt',
+      description: 'Shiny new secret'
+    });
+    expect(res.status).toBe(200);
+  });
 
   afterAll(() => {
     pool.end();
