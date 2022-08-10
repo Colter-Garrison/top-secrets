@@ -17,3 +17,10 @@ CREATE TABLE secrets (
   description TEXT NOT NULL,
   create_at TIMESTAMP
 );
+
+INSERT INTO secrets(
+  title,
+  description
+)
+Values
+('Sample', 'I am testing to see if this works');

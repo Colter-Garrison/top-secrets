@@ -49,6 +49,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toBe(204);
   });
 
+  it('GET should return a list of secrets if a user is signed in', async () => {
+    const [agent] = await registerAndLogin();
+    const res = await agent.get('/api/v1/secrets');
+    expect(res.status).toBe(200);
+  });
+  
+
   afterAll(() => {
     pool.end();
   });
